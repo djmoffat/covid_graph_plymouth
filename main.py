@@ -51,7 +51,8 @@ def average_smoothing(y, window_size=3):
 	return savgol_filter(y, window_size, 3)
 
 def plot_data(df, highlights=lockdowns, output_figure='images/plymouth_covid_graph.png'):
-	df.plot(x='date')
+	# plt.figure()
+	df.plot(x='date', figsize=(15,9))
 	for h in highlights:
 		plt.axvspan(h[0], h[1], color='grey', alpha=0.5)
 	plt.ylabel('Number of Cases') 
@@ -60,7 +61,7 @@ def plot_data(df, highlights=lockdowns, output_figure='images/plymouth_covid_gra
 
 def plot_data_pht(df, highlights=lockdowns, output_figure='images/plymouth_covid_graph_pht.png'):
 	df = data_to_pht(df)
-	df.plot(x='date')
+	df.plot(x='date', figsize=(15,9))
 	for h in highlights:
 		plt.axvspan(h[0], h[1], color='grey', alpha=0.5)
 	plt.ylabel('Number of Cases Per 100,000') 
