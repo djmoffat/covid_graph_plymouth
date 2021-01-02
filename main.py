@@ -83,6 +83,7 @@ def main():
 		df = (pd.merge(df, data[region], on='date', how='outer'))
 	plot_data(df)
 	plot_data_pht(df)
+	df.to_csv('data_dump.csv')
 
 
 if __name__ == "__main__":
