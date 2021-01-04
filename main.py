@@ -12,7 +12,7 @@ import datetime
 url = {}
 population = {}
 
-lockdowns = [(datetime.date(2020,11,5),datetime.date(2020,12,2)), (datetime.date(2020,3,23),datetime.date(2020,7,4))]
+lockdowns = [(datetime.date(2021,1,5),datetime.date(2021,2,22)), (datetime.date(2020,11,5),datetime.date(2020,12,2)), (datetime.date(2020,3,23),datetime.date(2020,7,4))]
 verbose = False
 
 
@@ -52,7 +52,9 @@ def average_smoothing(y, window_size=3):
 
 def plot_data(df, highlights=lockdowns, output_figure='images/plymouth_covid_graph.png'):
 	# plt.figure()
-	df.plot(x='date', figsize=(12,8))
+	df_ = df[df.columns[~df.columns.isin(['England_cases'])]]
+
+	df_.plot(x='date', figsize=(12,8))
 	for h in highlights:
 		plt.axvspan(h[0], h[1], color='grey', alpha=0.5)
 	plt.ylabel('Number of Cases') 
