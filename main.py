@@ -76,6 +76,12 @@ def data_to_pht(df):
 		df[region+'_cases'] = df[region+'_cases'].div(population[region]).mul(100000)
 	return df
 
+def	update_index(filename, date):
+
+	lines = open(filename, 'r').readlines()
+	lines[-1] = 'Last edited on: {}'.format(date)
+	open(filename, 'w').writelines(lines)
+
 def main():
 	df = pd.DataFrame(data={'date':[]})
 	data = {}
@@ -87,6 +93,7 @@ def main():
 	plot_data(df)
 	df.to_csv('data_dump.csv')
 	plot_data_pht(df)
+	update_index('index.md',df['date'].max())
 
 
 
