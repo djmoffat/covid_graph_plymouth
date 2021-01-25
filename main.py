@@ -41,7 +41,8 @@ def fetch_parse_data(region):
 	df_data = {}
 	df_data['date'] = [datetime.datetime.fromisoformat(d['date']) for d in post_data]
 	cases = [d['newCasesBySpecimenDate'] for d in post_data]
-	df_data[region+'_cases'] = average_smoothing(cases, window_size=7)
+	df_data[region+'_cases'] = cases
+	# df_data[region+'_cases'] = average_smoothing(cases, window_size=7)
 	df = pd.DataFrame(data=df_data)
 	if verbose:
 		print(df)
