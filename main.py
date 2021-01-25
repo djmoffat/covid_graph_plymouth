@@ -5,6 +5,7 @@ import matplotlib.pyplot as plt
 import requests
 import numpy as np
 import pandas as pd
+from datetime import date
 from scipy.signal import savgol_filter
 
 import datetime
@@ -76,10 +77,10 @@ def data_to_pht(df):
 		df[region+'_cases'] = df[region+'_cases'].div(population[region]).mul(100000)
 	return df
 
-def	update_index(filename, date):
+def	update_index(filename, date=date.today().strftime("%d %B %Y")):
 
 	lines = open(filename, 'r').readlines()
-	lines[-1] = 'Last edited on: {}'.format(date)
+	lines[-1] = 'Last updated on: {}'.format(date)
 	open(filename, 'w').writelines(lines)
 
 def main():
@@ -93,7 +94,7 @@ def main():
 	plot_data(df)
 	df.to_csv('data_dump.csv')
 	plot_data_pht(df)
-	update_index('index.md',df['date'].max())
+	update_index('index.md')
 
 
 
