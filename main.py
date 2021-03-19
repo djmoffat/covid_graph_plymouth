@@ -1,4 +1,4 @@
-#!/usr/local/opt/python/libexec/bin/python
+#!/usr/local/bin/python3
 
 import json
 import matplotlib.pyplot as plt
