@@ -7,4 +7,4 @@ Grey sections are used to identify national lockdowns, of various strengths.
 ![Covid Rates Per 100000](images/plymouth_covid_graph_pht.png "Plymouth Covid Graph Per 100000 ")
 
 
-Last updated on: 09 April 2021
+Last updated on: 16 April 2021
