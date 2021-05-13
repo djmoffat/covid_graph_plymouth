@@ -1,5 +1,6 @@
 #!/bin/bash
 git pull
-python3 main.py
-git commit -am "update-data"
+/usr/local/bin/python3 main.py
+git add images/* index.md
+git commit -m "update-data"
 git push
