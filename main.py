@@ -5,16 +5,21 @@ import matplotlib.pyplot as plt
 import requests
 import numpy as np
 import pandas as pd
+# import cufflinks as cf
+import pandas_bokeh as pb
 from datetime import date
 from scipy.signal import savgol_filter
 
 import datetime
 
+
 url = {}
 population = {}
-
 lockdowns = [(datetime.date(2021,1,5),datetime.date(2021,4,12)), (datetime.date(2020,11,5),datetime.date(2020,12,2)), (datetime.date(2020,3,23),datetime.date(2020,7,4))]
 verbose = False
+# cf.set_config_file(sharing='public',theme='white',offline=True)
+pd.set_option('plotting.backend', 'pandas_bokeh')
+
 
 
 def init_urls():
@@ -61,7 +66,8 @@ def plot_data(df, highlights=lockdowns, output_figure='images/plymouth_covid_gra
 		plt.axvspan(h[0], h[1], color='grey', alpha=0.5)
 	plt.ylabel('Number of Cases') 
 	plt.title('Covid Cases')
-	plt.savefig(output_figure)
+	# plt.savefig(output_figure)
+	pb.output_file(output_figure[:-3]+'.html')
 
 def plot_data_pht(df, highlights=lockdowns, output_figure='images/plymouth_covid_graph_pht.png'):
 	df_ = data_to_pht(df)
@@ -70,7 +76,9 @@ def plot_data_pht(df, highlights=lockdowns, output_figure='images/plymouth_covid
 		plt.axvspan(h[0], h[1], color='grey', alpha=0.5)
 	plt.ylabel('Number of Cases Per 100,000') 
 	plt.title('Covid Cases Per Hundered Thousand Local Population')
-	plt.savefig(output_figure)
+	# plt.savefig(output_figure)
+	pb.output_file(output_figure[:-3]+'.html')
+
 
 def data_to_pht(df):
 	for region in url:
