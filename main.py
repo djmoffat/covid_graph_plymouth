@@ -66,7 +66,7 @@ def plot_data(df, highlights=lockdowns, output_figure='images/plymouth_covid_gra
 		plt.axvspan(h[0], h[1], color='grey', alpha=0.5)
 	plt.ylabel('Number of Cases') 
 	plt.title('Covid Cases')
-	# plt.savefig(output_figure)
+	plt.savefig(output_figure)
 	pb.output_file(output_figure[:-3]+'.html')
 
 def plot_data_pht(df, highlights=lockdowns, output_figure='images/plymouth_covid_graph_pht.png'):
@@ -76,7 +76,7 @@ def plot_data_pht(df, highlights=lockdowns, output_figure='images/plymouth_covid
 		plt.axvspan(h[0], h[1], color='grey', alpha=0.5)
 	plt.ylabel('Number of Cases Per 100,000') 
 	plt.title('Covid Cases Per Hundered Thousand Local Population')
-	# plt.savefig(output_figure)
+	plt.savefig(output_figure)
 	pb.output_file(output_figure[:-3]+'.html')
 
 
